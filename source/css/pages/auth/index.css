@@ -30,11 +30,15 @@
   font-size: clamp(14px, 5vw, 16px);
 }
 .main--body button {
-  margin: 30px 0 0 0;
   padding: 10px 40px;
-  background-color: #000;
+  background-color: var(--main-button);
+  margin: 10px 0;
   color: #fff;
   font-size: clamp(14px, 5vw, 16px);
-  border: 0;
+  border: 1px solid #333;
   border-radius: 10px;
+}
+.main--body .main--body--button--first {
+  background-color: #000;
+  margin: 30px 0 0 0;
 }/*# sourceMappingURL=index.css.map */
