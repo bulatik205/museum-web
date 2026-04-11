@@ -1,3 +1,12 @@
+<?php
+require '../autoload.php';
+use App\Controllers\CsrfController;
+
+$csrf = new CsrfController();
+if (empty($csrf->getCSRF())) {
+    $csrf->setCSRF($csrf->generateCSRF());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
