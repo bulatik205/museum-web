@@ -22,3 +22,7 @@ if (!isset($headers['csrf_token'])) {
     ]);
     exit;
 }
+
+require '../../conf/index.php';
+require '../index.php';
+$userController = new UserController($pdo);
