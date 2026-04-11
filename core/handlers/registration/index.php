@@ -23,6 +23,18 @@ if (!isset($headers['csrf_token'])) {
     exit;
 }
 
-require '../../conf/index.php';
-require '../index.php';
+require '../../../autoload.php';
+
+use App\UserController;
+
 $userController = new UserController($pdo);
+if ($userController->isAuthenticated()) {
+    echo json_encode([
+        'success' => false,
+        'error' => [
+            'code' => 409,
+            'message' => 'Conflict'
+        ]
+    ]);
+    exit;
+}
