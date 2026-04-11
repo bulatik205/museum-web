@@ -1,5 +1,6 @@
 <?php
-require '../core/handlers/index.php';
+require '../autoload.php';
+use App\Controllers\CsrfController;
 
 $csrf = new CsrfController();
 if (empty($csrf->getCSRF())) {
