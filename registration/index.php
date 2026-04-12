@@ -23,7 +23,7 @@ if (empty($csrf->getCSRF())) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registartion</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="../source/css/pages/auth/index.css">
 </head>
 <body>
@@ -47,7 +47,7 @@ if (empty($csrf->getCSRF())) {
             </fieldset>
 
             <button class="main--body--button--first">Registration</button>
-            <button onclick="window.location.href='/login/'">Login</button>
+            <button onclick="window.location.href='../login/'">Login</button>
         </div>
     </main>
 

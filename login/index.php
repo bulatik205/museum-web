@@ -44,7 +44,7 @@ if (empty($csrf->getCSRF())) {
             </fieldset>
 
             <button class="main--body--button--first">Login</button>
-            <button onclick="window.location.href='/registration/'">Registration</button>
+            <button onclick="window.location.href='../registration/'">Registration</button>
         </div>
     </main>
 
