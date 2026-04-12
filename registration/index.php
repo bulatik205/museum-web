@@ -1,6 +1,17 @@
 <?php
 require '../autoload.php';
 use App\Controllers\CsrfController;
+use App\Controllers\UserController;
+use App\Database\Database;
+
+$db = new Database();
+$pdo = $db->getConnection();
+
+$userController = new UserController($pdo);
+if ($userController->isAuthenticated()) {
+    header('Location: ../dashboard/');
+    exit;
+}
 
 $csrf = new CsrfController();
 if (empty($csrf->getCSRF())) {
