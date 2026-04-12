@@ -121,8 +121,7 @@ class UserController
         $stmt = $this->pdo->prepare("
         SELECT 
             id, 
-            username, 
-            session_token, 
+            username,
             created_at 
         FROM `users` 
         WHERE `session_token` = ? 
@@ -144,7 +143,6 @@ class UserController
             'data' => [
                 'id' => $user['id'],
                 'username' => $user['username'],
-                'session_token' => $user['session_token'],
                 'created_at' => $user['created_at']
             ]
         ];

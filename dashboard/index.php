@@ -76,9 +76,6 @@ $userData = $userController->getUserData();
                                         <?php
                                         if ($field === 'created_at') {
                                             echo htmlspecialchars(date('F j, Y, g:i a', strtotime($value)), ENT_QUOTES, 'UTF-8');
-                                        } elseif ($field === 'session_token') {
-                                            $truncatedToken = strlen($value) > 40 ? substr($value, 0, 40) . '...' : $value;
-                                            echo '<code style="font-size: 12px;">' . htmlspecialchars($truncatedToken, ENT_QUOTES, 'UTF-8') . '</code>';
                                         } else {
                                             echo htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
                                         }
