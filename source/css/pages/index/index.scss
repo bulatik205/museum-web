@@ -45,6 +45,21 @@ main {
     }
 
     .media {
+        button {
+            padding: 10px 30px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 10px;
+            font-size: clamp(14px, 5vw, 16px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #333;
+            }
+        }
+
         img {
             width: clamp(50px, 5vw, 100px);
         }
