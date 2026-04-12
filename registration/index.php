@@ -43,5 +43,6 @@ if (empty($csrf->getCSRF())) {
     <script>
         window.CSRF_TOKEN = '<?= $csrf->getCSRF() ?>';
     </script>
+    <script src="../source/js/registration/index.js"></script>
 </body>
 </html>
