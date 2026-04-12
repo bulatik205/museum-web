@@ -25,7 +25,7 @@ if (!isset($headers['csrf_token'])) {
 
 require '../../../autoload.php';
 
-use App\UserController;
+use App\Controllers\UserController;
 
 $userController = new UserController($pdo);
 if ($userController->isAuthenticated()) {
