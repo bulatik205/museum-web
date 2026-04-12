@@ -68,4 +68,49 @@ class UserController
             'error' => 'Database error'
         ];
     }
+
+    public function login(string $username, string $password): array
+    {
+        $stmt = $this->pdo->prepare("SELECT id, password FROM `users` WHERE `username` = ?");
+        $stmt->execute([$username]);
+        
+        $user = $stmt->fetch();
+        
+        if (!$user) {
+            return [
+                'success' => false,
+                'error' => 'Invalid username or password'
+            ];
+        }
+        
+        if (!password_verify($password, $user['password'])) {
+            return [
+                'success' => false,
+                'error' => 'Invalid username or password'
+            ];
+        }
+        
+        $sessionToken = bin2hex(random_bytes(32));
+        
+        $stmt = $this->pdo->prepare("
+            UPDATE `users` 
+            SET `session_token` = ? 
+            WHERE `id` = ?
+        ");
+        
+        $result = $stmt->execute([$sessionToken, $user['id']]);
+        
+        if ($result) {
+            $_SESSION['session_token'] = $sessionToken;
+            
+            return [
+                'success' => true
+            ];
+        }
+        
+        return [
+            'success' => false,
+            'error' => 'Database error'
+        ];
+    }
 }
