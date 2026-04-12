@@ -32,7 +32,7 @@ if (!$csrfToken) {
     exit;
 }
 
-require __DIR__ . '/../../autoload.php';
+require '../../../autoload.php';
 
 use App\Controllers\CsrfController;
 use App\Controllers\UserController;

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (result.success) {
                 alert('Registration successful!');
-                window.location.href = '/dashboard/';
+                window.location.href = '../dashboard/';
             } else {
                 if (result.errors) {
                     let errorMsg = 'Validation errors:\n';
