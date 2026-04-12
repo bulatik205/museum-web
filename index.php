@@ -26,6 +26,13 @@
         </div>
 
         <div class="media">
+            <button onclick="window.location.href='login/'">Login page</button>
+            <button onclick="window.location.href='registration/'">Registration page</button>
+            <button onclick="window.location.href='dashboard/'">Dashboard page</button>
+            <button onclick="window.location.href='logout/'">Logout</button>
+        </div>
+
+        <div class="media">
             <a href="https://github.com/bulatik205/museum">
                 <img src="source/imges/GitHub_Invertocat_Black_Clearspace.png" alt="">
             </a>
