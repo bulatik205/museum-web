@@ -32,11 +32,12 @@ if (!$csrfToken) {
     exit;
 }
 
-require '../../../autoload.php';
+require __DIR__ . '/../../autoload.php';
 
 use App\Controllers\CsrfController;
 use App\Controllers\UserController;
 use App\Controllers\FieldsValidator;
+use App\Database\Database;
 
 $csrf = new CsrfController();
 if (!$csrf->validateToken($csrfToken)) {
@@ -48,7 +49,8 @@ if (!$csrf->validateToken($csrfToken)) {
     exit;
 }
 
-require '../../conf/database.config.php';
+$db = new Database();
+$pdo = $db->getConnection();
 
 $userController = new UserController($pdo);
 if ($userController->isAuthenticated()) {
@@ -95,7 +97,7 @@ if ($data['password'] !== $data['repeat_password']) {
     http_response_code(400);
     echo json_encode([
         'success' => false,
-        'errors' => "Password don`t match"
+        'error' => 'Passwords do not match'
     ]);
     exit;
 }
@@ -105,8 +107,7 @@ $result = $userController->register($data['username'], $data['password']);
 if ($result['success']) {
     echo json_encode([
         'success' => true,
-        'message' => $result['message'],
-        'user' => $result['user']
+        'message' => 'Registration successful'
     ]);
 } else {
     http_response_code(400);
