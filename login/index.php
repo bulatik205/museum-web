@@ -1,6 +1,17 @@
 <?php
 require '../autoload.php';
 use App\Controllers\CsrfController;
+use App\Controllers\UserController;
+use App\Database\Database;
+
+$db = new Database();
+$pdo = $db->getConnection();
+
+$userController = new UserController($pdo);
+if ($userController->isAuthenticated()) {
+    header('Location: ../dashboard/');
+    exit;
+}
 
 $csrf = new CsrfController();
 if (empty($csrf->getCSRF())) {
@@ -36,6 +47,11 @@ if (empty($csrf->getCSRF())) {
             <button onclick="window.location.href='/registration/'">Registration</button>
         </div>
     </main>
+
+    <script>
+        window.CSRF_TOKEN = '<?php echo $csrf->getCSRF(); ?>';
+    </script>
+    <script src="../source/js/login/index.js"></script>
 </body>
 
 </html>
