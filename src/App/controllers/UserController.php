@@ -73,44 +73,80 @@ class UserController
     {
         $stmt = $this->pdo->prepare("SELECT id, password FROM `users` WHERE `username` = ?");
         $stmt->execute([$username]);
-        
+
         $user = $stmt->fetch();
-        
+
         if (!$user) {
             return [
                 'success' => false,
                 'error' => 'Invalid username or password'
             ];
         }
-        
+
         if (!password_verify($password, $user['password'])) {
             return [
                 'success' => false,
                 'error' => 'Invalid username or password'
             ];
         }
-        
+
         $sessionToken = bin2hex(random_bytes(32));
-        
+
         $stmt = $this->pdo->prepare("
             UPDATE `users` 
             SET `session_token` = ? 
             WHERE `id` = ?
         ");
-        
+
         $result = $stmt->execute([$sessionToken, $user['id']]);
-        
+
         if ($result) {
             $_SESSION['session_token'] = $sessionToken;
-            
+
             return [
                 'success' => true
             ];
         }
-        
+
         return [
             'success' => false,
             'error' => 'Database error'
+        ];
+    }
+
+    public function getUserData(): array
+    {
+        $sessionToken = $_SESSION['session_token'];
+
+        $stmt = $this->pdo->prepare("
+        SELECT 
+            id, 
+            username, 
+            session_token, 
+            created_at 
+        FROM `users` 
+        WHERE `session_token` = ? 
+        LIMIT 1
+    ");
+
+        $stmt->execute([$sessionToken]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            return [
+                'success' => false,
+                'error' => 'User not found'
+            ];
+        }
+
+        return [
+            'success' => true,
+            'data' => [
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'session_token' => $user['session_token'],
+                'created_at' => $user['created_at']
+            ]
         ];
     }
 }
