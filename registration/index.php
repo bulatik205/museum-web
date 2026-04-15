@@ -43,7 +43,7 @@ if (empty($csrf->getCSRF())) {
 
             <fieldset>
                 <legend>Repeat password</legend>
-                <input type="text" minlength="4" maxlength="255" id="repeat-password">
+                <input type="password" minlength="4" maxlength="255" id="repeat-password">
             </fieldset>
 
             <button class="main--body--button--first">Registration</button>
