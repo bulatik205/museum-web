@@ -1,16 +1,16 @@
 {
     "cli": {
         "name": "museum",
-        "github": "<a href=\"https://github.com/bulatik205/museum\" target=\"_blank\">github.com/bulatik205/museum</a>",
+        "github": "https://github.com/bulatik205/museum",
         "version": "1.0.0",
-        "help": "<code><pre>php museum --help</pre></code>",
+        "help": "php museum --help",
         "description": ""
     },
     "web": {
         "name": "museum-web",
-        "github": "<a href=\"https://github.com/bulatik205/museum-web\" target=\"_blank\">github.com/bulatik205/museum-web</a>",
+        "github": "https://github.com/bulatik205/museum-web",
         "version": "1.0.0",
-        "help": "<code><pre>php museum --help</pre></code>",
+        "help": "php museum --help",
         "description": ""
     }
 }
