@@ -17,7 +17,7 @@ class Database
     
     private function createConnection(): PDO
     {
-        $configPath = __DIR__ . '/../../../core/conf/database.config.php';
+        $configPath = __DIR__ . '/../../../configs/database.config.php';
         
         if (!file_exists($configPath)) {
             throw new Exception("Database config not found: $configPath");

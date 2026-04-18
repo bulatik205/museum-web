@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    RewriteRule ^core/conf/ - [F,L]
+    RewriteRule ^confings/ - [F,L]
     RewriteRule ^src/ - [F,L]
     RewriteRule ^migration/ - [F,L]
     

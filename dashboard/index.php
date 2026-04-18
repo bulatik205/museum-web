@@ -15,8 +15,8 @@ if (!$userController->isAuthenticated()) {
 
 $settings = ['error' => ['message' => 'Settings unavailable']];
 
-if (file_exists("../core/conf/setting.json")) {
-    $settings = json_decode(file_get_contents("../core/conf/setting.json"), true);
+if (file_exists("../configs/setting.json")) {
+    $settings = json_decode(file_get_contents("../configs/setting.json"), true);
     if ($settings === null && json_last_error() !== JSON_ERROR_NONE) {
         echo "JSON decode error: " . json_last_error_msg();
     }
